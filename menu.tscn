@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/menu.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="título" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -117.5
+margin_top = -61.5
+margin_right = 117.5
+margin_bottom = 61.5
+text = "Novis Industria :)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="explicativo" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -513.0
+margin_top = 179.0
+margin_right = 333.0
+margin_bottom = 211.0
+text = "Verion 0.001
+left some boxes for physics fun :)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="explicativo2" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -65.0
+margin_right = 867.0
+text = "WASD to move, esc = quit game :(
+mouse is attack(in design)
+If possible give me feedback about the movment of the character and how it feels.
+Suggestions and criticism are welcome :)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="botao" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = 52.0
+margin_right = 65.0
+margin_bottom = 84.0
+text = "jogar"
+__meta__ = {
+"_edit_use_anchors_": false
+}

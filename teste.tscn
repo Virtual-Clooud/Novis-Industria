@@ -1,0 +1,364 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://scripts/cave(entrance).gd" type="Script" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.976471, 0.72549, 0.337255, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 400, 400 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 200, 0.1, 200 )
+
+[sub_resource type="SphereMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.980392, 0.890196, 0.733333, 1 )
+roughness = 0.45
+
+[sub_resource type="PrismMesh" id=6]
+material = SubResource( 5 )
+size = Vector3( 5, 1, 5 )
+subdivide_depth = 1
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.419608, 0.419608, 0.419608, 1 )
+metallic = 0.16
+refraction_enabled = true
+refraction_scale = 0.05
+refraction_texture_channel = 0
+
+[sub_resource type="CylinderMesh" id=8]
+material = SubResource( 7 )
+top_radius = 0.1
+bottom_radius = 0.1
+height = 10.0
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 2.36178, 0.464906, 2.68459 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 2, 50, 50 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.298039, 0.0705882, 0.0352941, 1 )
+
+[sub_resource type="CubeMesh" id=12]
+material = SubResource( 11 )
+size = Vector3( 4, 100, 100 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.584314, 0.105882, 0.945098, 1 )
+emission_enabled = true
+emission = Color( 0.584314, 0.184314, 0.913725, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=14]
+material = SubResource( 13 )
+radius = 5.0
+height = 10.0
+
+[sub_resource type="SphereShape" id=15]
+radius = 5.09902
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 500, 300, 1 )
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 0.231373, 0.223529, 0.223529, 1 )
+
+[sub_resource type="CubeMesh" id=18]
+material = SubResource( 17 )
+size = Vector3( 1000, 600, 2 )
+
+[sub_resource type="BoxShape" id=19]
+
+[sub_resource type="CubeMesh" id=20]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.999241, 0, 0.0389639, 0, 1, 0, -0.0389639, 0, 0.999241, 0, 2.14824, 16.1914 )
+
+[node name="Camera" parent="Player/head" index="0"]
+current = true
+far = 455.5
+
+[node name="ground" type="Spatial" parent="."]
+
+[node name="ground" type="StaticBody" parent="ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00939941, -0.0541844, -0.252777 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="ground/ground"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="ground/ground"]
+shape = SubResource( 3 )
+
+[node name="camera" type="Camera" parent="."]
+transform = Transform( -1, -1.62921e-07, -2.82187e-07, 0, 0.866025, -0.5, 3.25841e-07, -0.5, -0.866025, 0, 7.50206, -69.7991 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="camera" type="MeshInstance" parent="camera"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="village" type="Spatial" parent="."]
+
+[node name="tent" type="Spatial" parent="village"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.68328, 2.39053, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="village/tent"]
+
+[node name="teto" type="MeshInstance" parent="village/tent/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.77345, 0 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="pila" type="MeshInstance" parent="village/tent/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22546, -1.68014, 2.20683 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="pila2" type="MeshInstance" parent="village/tent/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22546, -1.68014, -2.2374 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="pila3" type="MeshInstance" parent="village/tent/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21026, -1.68014, -1.96584 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="pila4" type="MeshInstance" parent="village/tent/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21877, -1.68014, 2.20683 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="village/tent/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.70608, 0.120074 )
+shape = SubResource( 9 )
+
+[node name="walls" type="Spatial" parent="village"]
+
+[node name="wall" type="StaticBody" parent="village/walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -62.2607, 0, -24.1599 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/walls/wall"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/walls/wall"]
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="wall2" type="StaticBody" parent="village/walls"]
+transform = Transform( 0.901259, 0, -0.433282, 0, 1, 0, 0.433282, 0, 0.901259, -63.4891, 0, -67.5716 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/walls/wall2"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/walls/wall2"]
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="wall3" type="StaticBody" parent="village/walls"]
+transform = Transform( 0.503457, 0, -0.86402, 0, 1, 0, 0.86402, 0, 0.503457, -63.4891, 0, -102.81 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/walls/wall3"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/walls/wall3"]
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="wall4" type="StaticBody" parent="village/walls"]
+transform = Transform( -0.999903, 0.0139446, 0, -0.0139446, -0.999903, 0, 0, 0, 1, 66.9591, -0.00856465, -10.8381 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/walls/wall4"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/walls/wall4"]
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="wall5" type="StaticBody" parent="village/walls"]
+transform = Transform( -0.901171, 0.0139446, 0.43324, -0.0125677, -0.999903, 0.00604192, 0.433282, 0, 0.901259, 68.1874, 0.00856465, -54.2497 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/walls/wall5"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/walls/wall5"]
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="wall6" type="StaticBody" parent="village/walls"]
+transform = Transform( -0.503408, 0.0139446, 0.863936, -0.00702049, -0.999903, 0.0120484, 0.86402, 0, 0.503457, 68.1874, 0.00856465, -89.4886 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/walls/wall6"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/walls/wall6"]
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="cave(entrance)" type="Spatial" parent="village"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362873, 4.19045, 31.9191 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="entrance" type="StaticBody" parent="village/cave(entrance)"]
+
+[node name="entrance" type="MeshInstance" parent="village/cave(entrance)/entrance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.03851, -5.20284 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="portal_area" type="Area" parent="village/cave(entrance)/entrance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83937, -5.25378 )
+
+[node name="CollisionShape" type="CollisionShape" parent="village/cave(entrance)/entrance/portal_area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19914, 0.0509434 )
+shape = SubResource( 15 )
+
+[node name="wall" type="StaticBody" parent="village/cave(entrance)"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50873, 4.60589 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/cave(entrance)/wall"]
+shape = SubResource( 16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/cave(entrance)/wall"]
+mesh = SubResource( 18 )
+material/0 = null
+
+[node name="boxes" type="Spatial" parent="village"]
+
+[node name="box" type="RigidBody" parent="village/boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1733, 5.64082, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/boxes/box"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/boxes/box"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="box2" type="RigidBody" parent="village/boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1733, 5.64082, -14.2304 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/boxes/box2"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/boxes/box2"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="box3" type="RigidBody" parent="village/boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1733, 12.9113, -14.2304 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/boxes/box3"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/boxes/box3"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="box4" type="RigidBody" parent="village/boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1733, 19.932, -14.2304 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/boxes/box4"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/boxes/box4"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="box5" type="RigidBody" parent="village/boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.735, 19.1341, -1.93806 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/boxes/box5"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/boxes/box5"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="box6" type="RigidBody" parent="village/boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2025, 19.1341, -1.93806 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/boxes/box6"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/boxes/box6"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="box7" type="RigidBody" parent="village/boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5948, 6.45251, -1.93806 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="village/boxes/box7"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="village/boxes/box7"]
+mesh = SubResource( 20 )
+material/0 = null
+[connection signal="area_entered" from="village/cave(entrance)/entrance/portal_area" to="village/cave(entrance)" method="_on_area_entered"]
+
+[editable path="Player"]

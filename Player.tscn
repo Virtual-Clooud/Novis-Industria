@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Arma.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/animations/moving.tres" type="Animation" id=4]
+[ext_resource path="res://assets/animations/jump.tres" type="Animation" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.637256
+height = 0.864283
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.71132
+height = 0.7463
+
+[node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31382, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.709638, -0.310032 )
+
+[node name="Camera" type="Camera" parent="head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.294 )
+fov = 80.0
+near = 0.72
+far = 816.2
+
+[node name="animation" type="AnimationPlayer" parent="head/Camera"]
+anims/jump = ExtResource( 5 )
+anims/moving = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="arma" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0439854, 0, -0.999032, 0, 1, 0, 0.999032, 0, 0.0439854, -2.82179, 0, 0 )
+
+[node name="other" type="Spatial" parent="."]
+
+[node name="interact" type="Area" parent="other" groups=[
+"traveler",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="other/interact"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 2 )
